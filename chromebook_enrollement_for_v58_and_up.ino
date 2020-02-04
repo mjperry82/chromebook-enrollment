@@ -12,7 +12,7 @@
 
 /* Modify the following definitions to fit your wireless and enrollment credentials. */
 
-#define device_version 73 // Change to the ChromeOS version you expect to use with Centipede; Changes have been reported in the following ranges 58-68, 69, 70
+#define device_version 79 // Change to the ChromeOS version you expect to use with Centipede; Changes have been reported in the following ranges 58-68, 69, 70
 
 #define wifi_name "---" // Define SSID for your wireless connection.
 #define wifi_pass "---" // Define the password for your wireless connection.
@@ -57,6 +57,7 @@
 // Version Definition
 #define VERSION_69 (device_version >= 69)
 #define VERSION_70 (device_version >= 70)
+#define VERSION_79 (device_version >= 70 && device_version < 79)
 
 // Special characters definition
 #define KEY_LEFT_CTRL   0x80
@@ -275,7 +276,7 @@ void wifiConfig() {
   wait(2);
   Keyboard.write(KEY_ENTER); // Click "Let's Go"
   wait(1);
-  repeatKey(KEY_TAB, 2 + VERSION_70); // 3 for version 70+ (black menu)
+  repeatKey(KEY_TAB, 2 + VERSION_79); // 3 for version 70-78 (black menu)
   // After connecting, enter the enrollment key command to skip checking for update at this point in the process
   if (!update_via_guest){
     enterEnrollment();
